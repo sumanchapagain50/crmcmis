@@ -2110,7 +2110,7 @@ function renderCharts(totals) {
     if (reachChart) reachChart.destroy();
     if (pieChart) pieChart.destroy();
 
-    const labels = ['Men', 'Women', 'Old Men', 'Old Women', 'New Men', 'New Women'];
+    const labels = ['Men', 'Women', 'Men (Old Participants)', 'Women (Old Participants)', 'Men (New Participants)', 'Women (New Participants)'];
     const dataVals = [totals.men, totals.women, totals.oldMen, totals.oldWomen, totals.newMen, totals.newWomen];
 
     reachChart = new Chart(ctxBar, {
