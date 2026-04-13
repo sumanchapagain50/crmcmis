@@ -1508,6 +1508,17 @@ window.openScoreDetailModal = function(item) {
                 style="background:rgba(255,255,255,0.06); color:#aaa; border:1px solid rgba(255,255,255,0.12); border-radius:6px; padding:4px 12px; font-size:0.72rem; font-weight:700; cursor:pointer;">▲ Best First</button>
             <button id="sdsort-desc" onclick="window._renderScoreDetailTable('desc')"
                 style="background:rgba(255,255,255,0.06); color:#aaa; border:1px solid rgba(255,255,255,0.12); border-radius:6px; padding:4px 12px; font-size:0.72rem; font-weight:700; cursor:pointer;">▼ Worst First</button>
+            
+            <div style="width:1px; height:16px; background:rgba(255,255,255,0.1); margin:0 4px;"></div>
+
+            <button id="sdsort-grade-A" onclick="window._renderScoreDetailTable('grade-A')"
+                style="background:rgba(255,255,255,0.06); color:#aaa; border:1px solid rgba(255,255,255,0.12); border-radius:6px; padding:4px 10px; font-size:0.72rem; font-weight:700; cursor:pointer;">A (${gradeCounts.A})</button>
+            <button id="sdsort-grade-B" onclick="window._renderScoreDetailTable('grade-B')"
+                style="background:rgba(255,255,255,0.06); color:#aaa; border:1px solid rgba(255,255,255,0.12); border-radius:6px; padding:4px 10px; font-size:0.72rem; font-weight:700; cursor:pointer;">B (${gradeCounts.B})</button>
+            <button id="sdsort-grade-C" onclick="window._renderScoreDetailTable('grade-C')"
+                style="background:rgba(255,255,255,0.06); color:#aaa; border:1px solid rgba(255,255,255,0.12); border-radius:6px; padding:4px 10px; font-size:0.72rem; font-weight:700; cursor:pointer;">C (${gradeCounts.C})</button>
+            <button id="sdsort-grade-D" onclick="window._renderScoreDetailTable('grade-D')"
+                style="background:rgba(255,255,255,0.06); color:#aaa; border:1px solid rgba(255,255,255,0.12); border-radius:6px; padding:4px 10px; font-size:0.72rem; font-weight:700; cursor:pointer;">D (${gradeCounts.D})</button>
         </div>`;
 
     // --- Fetch Demographic & Reach Data ---
@@ -1604,8 +1615,14 @@ window.openScoreDetailModal = function(item) {
             <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:16px;">
                 <!-- Column 1: Community Demographics -->
                 <div style="background:rgba(255,255,255,0.03); padding:10px; border-radius:8px;">
-                    <div style="font-size:0.65rem; color:#888; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1px solid rgba(255,255,255,0.05); margin-bottom:8px; padding-bottom:4px; font-weight:700;">Community Demographics</div>
+                    <div style="font-size:0.65rem; color:#888; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1px solid rgba(255,255,255,0.05); margin-bottom:8px; padding-bottom:4px; font-weight:700;">Community Profile</div>
                     <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
+                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#666; text-transform:uppercase;">Municipality</span><span style="font-size:0.65rem; color:#aaa;">${demo?.municipality || '-'}</span></div>
+
+                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#666; text-transform:uppercase;">District</span><span style="font-size:0.65rem; color:#aaa;">${demo?.district || '-'}</span></div>
+
+                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#666; text-transform:uppercase;">Province</span><span style="font-size:0.65rem; color:#aaa;">${demo?.province || '-'}</span></div>
+
                         <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#666; text-transform:uppercase;">Total Pop</span><span style="font-size:0.8rem; color:#eee; font-weight:600;">${demo?.totalPop || '-'}</span></div>
                         <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#666; text-transform:uppercase;">Households</span><span style="font-size:0.8rem; color:#eee; font-weight:600;">${demo?.hhs || '-'}</span></div>
                         <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#666; text-transform:uppercase;">Men</span><span style="font-size:0.8rem; color:#eee;">${demo?.male || '-'}</span></div>
@@ -1613,14 +1630,13 @@ window.openScoreDetailModal = function(item) {
                         <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#666; text-transform:uppercase;">Children</span><span style="font-size:0.8rem; color:#eee;">${demo?.children || '-'}</span></div>
                         <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#666; text-transform:uppercase;">Elderly</span><span style="font-size:0.8rem; color:#eee;">${demo?.elderly || '-'}</span></div>
                         <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#666; text-transform:uppercase;">Disabilities</span><span style="font-size:0.8rem; color:#eee;">${demo?.disabilities || '-'}</span></div>
-                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#666; text-transform:uppercase;">Dist/Prov</span><span style="font-size:0.65rem; color:#aaa;">${demo?.district || '-'}/${demo?.province || '-'}</span></div>
                     </div>
                 </div>
 
                 <!-- Column 2: Activity Reach Details -->
                 <div style="background:rgba(20, 163, 163,0.04); padding:10px; border-radius:8px; border:1px solid rgba(20, 163, 163,0.1);">
                     <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(20, 163, 163,0.1); margin-bottom:8px; padding-bottom:4px;">
-                        <div style="font-size:0.65rem; color:#14a3a3; text-transform:uppercase; letter-spacing:0.5px; font-weight:700;">Project Outreach (Reach)</div>
+                        <div style="font-size:0.65rem; color:#14a3a3; text-transform:uppercase; letter-spacing:0.5px; font-weight:700;">Project Reach</div>
                         <div style="display:flex; gap:4px;">
                             <select id="modal-filter-year" onchange="window._updateModalReach('${item.name.replace(/'/g, "\\'")}', '${(item.code || '').replace(/'/g, "\\'")}')" 
                                 style="background:#1a1a2e; color:#14a3a3; border:1px solid rgba(20, 163, 163,0.3); border-radius:4px; font-size:0.55rem; padding:1px 2px; outline:none; cursor:pointer;">
@@ -1642,10 +1658,10 @@ window.openScoreDetailModal = function(item) {
                                 <span id="modal-reach-overall" style="font-size:0.75rem; color:#888;">(Overall: ${totalOverall.toLocaleString()})</span>
                             </div>
                         </div>
-                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#888; text-transform:uppercase;">New Men</span><span id="modal-reach-nm" style="font-size:0.8rem; color:#00e676; font-weight:600;">${rNM.toLocaleString()}</span></div>
-                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#888; text-transform:uppercase;">New Women</span><span id="modal-reach-nw" style="font-size:0.8rem; color:#00e676; font-weight:600;">${rNW.toLocaleString()}</span></div>
-                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#888; text-transform:uppercase;">Old Men</span><span id="modal-reach-om" style="font-size:0.8rem; color:#aaa;">${rOM.toLocaleString()}</span></div>
-                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#888; text-transform:uppercase;">Old Women</span><span id="modal-reach-ow" style="font-size:0.8rem; color:#aaa;">${rOW.toLocaleString()}</span></div>
+                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#888; text-transform:uppercase;">New Participant (Men)</span><span id="modal-reach-nm" style="font-size:0.8rem; color:#00e676; font-weight:600;">${rNM.toLocaleString()}</span></div>
+                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#888; text-transform:uppercase;">New Participant (Women)</span><span id="modal-reach-nw" style="font-size:0.8rem; color:#00e676; font-weight:600;">${rNW.toLocaleString()}</span></div>
+                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#888; text-transform:uppercase;">Old Participant (Men)</span><span id="modal-reach-om" style="font-size:0.8rem; color:#aaa;">${rOM.toLocaleString()}</span></div>
+                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#888; text-transform:uppercase;">Old Participant (Women)</span><span id="modal-reach-ow" style="font-size:0.8rem; color:#aaa;">${rOW.toLocaleString()}</span></div>
                     </div>
                 </div>
             </div>
@@ -2021,20 +2037,19 @@ window._renderScoreDetailTable = function(sortMode) {
     window._scoreDetailSort = sortMode;
 
     // Update sort button styles
-    ['default','asc','desc'].forEach(k => {
+    const gradeColorsBtn = { 'grade-A': '#00e676', 'grade-B': '#ffeb3b', 'grade-C': '#ff9800', 'grade-D': '#ff1744' };
+    ['default','asc','desc','grade-A','grade-B','grade-C','grade-D'].forEach(k => {
         const btn = document.getElementById('sdsort-' + k);
         if (!btn) return;
-        const isActive = (k === sortMode) ||
-            (sortMode && sortMode.startsWith('grade-') && k === 'default');
-        btn.style.background     = isActive ? '#00e676' : 'rgba(255,255,255,0.06)';
+        const isActive = (k === sortMode);
+        
+        let activeBg = '#00e676';
+        if (k.startsWith('grade-')) activeBg = gradeColorsBtn[k] || '#00e676';
+        
+        btn.style.background     = isActive ? activeBg : 'rgba(255,255,255,0.06)';
         btn.style.color          = isActive ? '#121212' : '#aaa';
         btn.style.border         = isActive ? 'none'    : '1px solid rgba(255,255,255,0.12)';
     });
-    // If filtering by a specific grade, highlight "By Capital" as inactive
-    if (sortMode && sortMode.startsWith('grade-')) {
-        const btn = document.getElementById('sdsort-default');
-        if (btn) { btn.style.background = 'rgba(255,255,255,0.06)'; btn.style.color = '#aaa'; btn.style.border = '1px solid rgba(255,255,255,0.12)'; }
-    }
 
     const commData  = (typeof data !== 'undefined' && data) ? data[item.name] : null;
     const indList   = (typeof indicators !== 'undefined') ? indicators : [];
@@ -2822,14 +2837,14 @@ function initScoresMap() {
     scoresMapBaseLayer = L.tileLayer(tileUrl, {
         attribution: '&copy; CartoDB',
         maxZoom: 19
-    }).addTo(scoresMap);
+    });
 
-    // High Quality Google Satellite Layer (Pre-initialize)
+    // High Quality Google Satellite Layer (Default)
     satelliteMapLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
         attribution: '&copy; Google Maps',
-        maxZoom: 20
-    });
+        maxZoom: 21
+    }).addTo(scoresMap);
 
     // Populate Community Dropdown
     const select = document.getElementById('map-community-select');
@@ -2844,6 +2859,7 @@ function initScoresMap() {
     }
 
     renderAllCommunityMarkers();
+    updateMapLegend(''); // Force global legend on load
 }
 
 function renderAllCommunityMarkers() {
@@ -2938,7 +2954,6 @@ window.handleMapCommunityChange = function(commName) {
 
     if (!commName) {
         if (header) header.innerText = "Nepal";
-        if (legend) legend.classList.add('hidden');
         renderAllCommunityMarkers();
         return;
     }
@@ -2972,13 +2987,29 @@ function updateMapLegend(commName) {
     const legendContainer = document.getElementById('map-legend-items');
     if (!legendContainer) return;
 
-    const resources = (typeof COMMUNITY_RESOURCES !== 'undefined') ? (COMMUNITY_RESOURCES[commName] || []) : [];
+    let resources = [];
+    if (commName && typeof COMMUNITY_RESOURCES !== 'undefined') {
+        resources = COMMUNITY_RESOURCES[commName] || [];
+    } else if (typeof COMMUNITY_RESOURCES !== 'undefined') {
+        // Aggregate all resources from all communities for "Global" view
+        Object.values(COMMUNITY_RESOURCES).forEach(list => {
+            resources = resources.concat(list);
+        });
+    }
     
-    // Get types from resources
-    let typesSet = new Set(resources.map(r => r.type));
+    // Get unique normalized types
+    let typesSet = new Set();
+    resources.forEach(r => {
+        if (r.type) {
+            let t = r.type.trim();
+            // Normalize: Infrastructures -> Infrastructure
+            if (t === 'Infrastructures') t = 'Infrastructure';
+            typesSet.add(t);
+        }
+    });
     
-    // Filter out Extent, Community, and Chowk from the legend list
-    const excludedTypes = ['Extent', 'Community', 'Chowk'];
+    // Filter out Extent and Community from the legend list
+    const excludedTypes = ['Extent', 'Community'];
     const types = [...typesSet].filter(t => t && !excludedTypes.includes(t));
     types.sort();
 
@@ -2999,6 +3030,7 @@ function updateMapLegend(commName) {
             </div>
         `;
     }).join('');
+
 }
 
 function renderResourceMarkers(commName) {

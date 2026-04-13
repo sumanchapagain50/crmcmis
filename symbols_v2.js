@@ -23,6 +23,7 @@ const RESOURCE_SYMBOLS = {
     "Temple": "assets/govoffice.svg",
     "Forest": "assets/highland.svg",
     "Settlement": "assets/lowland.svg",
+    "Water Body": "assets/culvert.svg",
     "Ward Office": "assets/wardoffice.svg",
     "Gov Office": "assets/govoffice.svg",
     "Municipality Office": "assets/municipalityoffice.svg",
@@ -51,6 +52,7 @@ const RESOURCE_COLORS = {
     "Temple": "#f97316",    // Orange
     "Forest": "#059669",    // Dark Green
     "Settlement": "#d97706", // Brownish/Amber
+    "Water Body": "#0284c7",  // Ocean Blue
     "Default": "#14a3a3"     // Original Teal
 };
 

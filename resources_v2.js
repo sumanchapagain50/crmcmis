@@ -214,7 +214,7 @@ const COMMUNITY_RESOURCES = {
     { name: "Clinic", type: "Health", lat: 28.5568, lng: 81.1778 },
     { name: "Ward Office", type: "Social", lat: 28.5555, lng: 81.1762 }
   ],
-  "Lauthuwa Jogipur": [
+  "Lauthuwa (Jogipur)": [
     { name: "Health Center", type: "Health", lat: 28.3335, lng: 76.3142 },
     { name: "Market Area", type: "Economy", lat: 28.3322, lng: 76.3122 }
   ],

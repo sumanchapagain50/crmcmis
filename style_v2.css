@@ -2353,14 +2353,15 @@ body.light .leaflet-control-scale {
    MEL DASHBOARD STYLES
    ========================================== */
 .mel-toolbar {
-    padding: 15px 25px;
+    padding: 8px 20px;
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    gap: 12px;
+    flex-shrink: 0;
 }
 
 .mel-filter-group {
@@ -2478,8 +2479,9 @@ body.light .view-toggle-btn { color: #666; }
 body.light .view-toggle-btn.active { background: #00a855; color: #fff; }
 
 .mel-dashboard {
-    padding: 20px;
-    display: block;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
     height: calc(100vh - 120px);
     overflow: hidden;
     position: relative;
@@ -2492,8 +2494,133 @@ body.light .view-toggle-btn.active { background: #00a855; color: #fff; }
 }
 
 .mel-view-content.active {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    gap: 10px;
 }
+
+/* KPI Row — compact horizontal strip */
+.mel-kpi-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+}
+
+.mel-kpi-card {
+    flex: 1;
+    min-width: 0;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+body.light .mel-kpi-card {
+    background: #fff;
+    border-color: #e2e8f0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.mel-kpi-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,0.06);
+}
+
+.kpi-label {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.kpi-value {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.1;
+}
+
+body.light .kpi-value { color: #1e293b; }
+
+.kpi-subtext {
+    font-size: 0.68rem;
+    color: #64748b;
+}
+
+/* Dashboard rows — fill remaining height evenly */
+.mel-top-section { display: flex; gap: 10px; align-items: stretch; flex-shrink: 0; }
+.mel-top-section .mel-kpi-row { flex: 1; flex-direction: row; flex-wrap: nowrap; }
+.mel-vuln-card { width: 260px; flex-shrink: 0; min-height: unset; }
+
+/* Charts row — fills remaining vertical space */
+.mel-row {
+    display: grid;
+    gap: 5px;
+    flex: 1;
+    min-height: 0;
+}
+
+.mel-row--4col { grid-template-columns: repeat(4, 1fr); }
+.mel-row--3col { grid-template-columns: repeat(3, 1fr); }
+.mel-row--2col { grid-template-columns: repeat(2, 1fr); }
+
+@media (max-width: 1200px) {
+    .mel-row--4col { grid-template-columns: repeat(2, 1fr); }
+    .mel-row--3col { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 1100px) {
+    .mel-top-section { flex-direction: column; }
+    .mel-vuln-card { width: 100%; }
+}
+@media (max-width: 720px) {
+    .mel-row--4col,
+    .mel-row--3col,
+    .mel-row--2col { grid-template-columns: 1fr; }
+}
+
+
+
+.mel-viz-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 0;
+    overflow: hidden;
+}
+
+body.light .mel-viz-card {
+    background: #fff;
+    border-color: #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+}
+
+.viz-header { margin-bottom: 8px; flex-shrink: 0; }
+.viz-header h3 { margin: 0; font-size: 0.95rem; font-weight: 700; color: #14a3a3; }
+.viz-subtitle { font-size: 0.72rem; color: #94a3b8; margin-top: 2px; }
+
+.mel-chart-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    min-height: 0;
+
+}
+
+/* Remove old unused class */
+.mel-dashboard-grid { display: contents; }
 
 @keyframes melViewFade {
     from { opacity: 0; transform: translateY(10px); }
@@ -2621,15 +2748,16 @@ body.light .view-toggle-btn.active { background: #00a855; color: #fff; }
 .mel-chart-legend-row {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    margin-top: 40px;
+    gap: 16px;
+    margin-top: 6px;
+    flex-shrink: 0;
 }
 
 .leg-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 0.9rem;
+    gap: 6px;
+    font-size: 0.75rem;
     color: #aaa;
     font-weight: 500;
 }

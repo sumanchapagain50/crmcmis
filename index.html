@@ -186,7 +186,7 @@
                     <button class="map-reset-btn" onclick="handleMapCommunityChange('')" title="Reset View">↺</button>
                     <div class="toolbar-divider"></div>
                     <label class="sat-toggle-mini">
-                        <input type="checkbox" id="satellite-toggle" onchange="toggleSatelliteMap(this.checked)">
+                        <input type="checkbox" id="satellite-toggle" onchange="toggleSatelliteMap(this.checked)" checked>
                         <span class="slider"></span>
                         <span class="label-text">Satellite</span>
                     </label>
@@ -303,18 +303,56 @@
 
                 <!-- Dashboard View -->
                 <div id="mel-dashboard-view" class="mel-view-content">
-                    <div class="mel-viz-card full-viz">
-                        <div class="viz-header">
-                            <h3>Reach Distribution</h3>
-                            <div class="viz-subtitle">Comparison across demographic categories (Filtered Data)</div>
+
+                    <!-- Row 1: KPI Cards -->
+                    <div class="mel-kpi-row" id="mel-kpi-container">
+                        <!-- Injected by JS: Target Pop | Households | Project Reach | Reach Coverage -->
+                    </div>
+
+                    <!-- Row 2: 4-Column Chart Grid -->
+                    <div class="mel-row mel-row--4col">
+
+                        <div class="mel-viz-card">
+                            <div class="viz-header">
+                                <h3>Vulnerability Profile</h3>
+                                <div class="viz-subtitle">Children, Elderly &amp; Disabilities</div>
+                            </div>
+                            <div id="mel-vulnerability-chart" class="mel-chart-container"></div>
+                            <div class="mel-chart-legend-row"></div>
                         </div>
-                        <div id="mel-reach-bar-chart" class="mel-chart-container main-chart"></div>
-                        <div class="mel-chart-legend-row">
-                            <div class="leg-item"><span class="dot nm"></span> New Men</div>
-                            <div class="leg-item"><span class="dot nw"></span> New Women</div>
-                            <div class="leg-item"><span class="dot om"></span> Old Men</div>
-                            <div class="leg-item"><span class="dot ow"></span> Old Women</div>
+
+                        <div class="mel-viz-card">
+                            <div class="viz-header">
+                                <h3>Reach Distribution</h3>
+                                <div class="viz-subtitle">New vs. Repeated beneficiaries</div>
+                            </div>
+                            <div id="mel-reach-bar-chart" class="mel-chart-container"></div>
+                            <div class="mel-chart-legend-row">
+                                <div class="leg-item"><span class="dot nm"></span> New Participant (Men)</div>
+                                <div class="leg-item"><span class="dot nw"></span> New Participant (Women)</div>
+                                <div class="leg-item"><span class="dot om"></span> Old Participant (Men)</div>
+                                <div class="leg-item"><span class="dot ow"></span> Old Participant (Women)</div>
+                            </div>
                         </div>
+
+                        <div class="mel-viz-card">
+                            <div class="viz-header">
+                                <h3>Gender Balance</h3>
+                                <div class="viz-subtitle">Men vs. Women — project reach</div>
+                            </div>
+                            <div id="mel-gender-donut" class="mel-chart-container"></div>
+                            <div id="mel-gender-legend" class="mel-chart-legend-row"></div>
+                        </div>
+
+                        <div class="mel-viz-card">
+                            <div class="viz-header">
+                                <h3>Reach Trend</h3>
+                                <div class="viz-subtitle">Cumulative reach over quarters</div>
+                            </div>
+                            <div id="reach-trend-chart" class="mel-chart-container"></div>
+                            <div class="mel-chart-legend-row"></div>
+                        </div>
+
                     </div>
                 </div>
             </div>
