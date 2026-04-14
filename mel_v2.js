@@ -532,22 +532,22 @@ function renderReachKPIs(m, demo) {
         <div class="mel-kpi-card">
             <span class="kpi-label">Target Pop</span>
             <span class="kpi-value">${demo.totalPop.toLocaleString()}</span>
-            <span class="kpi-subtext">Across working communities</span>
-        </div>
-        <div class="mel-kpi-card">
-            <span class="kpi-label">Households</span>
-            <span class="kpi-value">${demo.hhs.toLocaleString()}</span>
-            <span class="kpi-subtext">Estimated families to be benefitted</span>
+            <span class="kpi-subtext">Across processed communities</span>
         </div>
         <div class="mel-kpi-card">
             <span class="kpi-label">Project Reach</span>
             <span class="kpi-value">${totalReach.toLocaleString()}</span>
-            <span class="kpi-subtext">${m.newM + m.newW} new, ${m.oldM + m.oldW} repeated</span>
+            <span class="kpi-subtext">${m.newM + m.newW} new, ${m.oldM + m.oldW} returning</span>
+        </div>
+        <div class="mel-kpi-card">
+            <span class="kpi-label">Households</span>
+            <span class="kpi-value">${demo.hhs.toLocaleString()}</span>
+            <span class="kpi-subtext">Estimated families impacted</span>
         </div>
         <div class="mel-kpi-card">
             <span class="kpi-label">Reach Coverage</span>
             <span class="kpi-value">${coverage}%</span>
-            <span class="kpi-subtext">of target population reached</span>
+            <span class="kpi-subtext">Of target population reached</span>
         </div>
     `;
 }
@@ -659,10 +659,10 @@ function renderDoubleComparison(m) {
 
     const maxVal = Math.max(m.newM, m.newW, m.oldM, m.oldW, 1);
     const data = [
-        { label: 'New Participant (Men)',   val: m.newM, color: '#4facfe', bg: 'rgba(79,172,254,0.12)'  },
-        { label: 'New Participant (Women)', val: m.newW, color: '#f093fb', bg: 'rgba(240,147,251,0.12)' },
-        { label: 'Old Participant (Men)',   val: m.oldM, color: '#3b82f6', bg: 'rgba(59,130,246,0.12)'  },
-        { label: 'Old Participant (Women)', val: m.oldW, color: '#ec4899', bg: 'rgba(236,72,153,0.12)'  }
+        { label: 'New Participants (Men)',   val: m.newM, color: '#4facfe', bg: 'rgba(79,172,254,0.12)'  },
+        { label: 'New Participants (Women)', val: m.newW, color: '#f093fb', bg: 'rgba(240,147,251,0.12)' },
+        { label: 'Old Participants (Men)',   val: m.oldM, color: '#3b82f6', bg: 'rgba(59,130,246,0.12)'  },
+        { label: 'Old Participants (Women)', val: m.oldW, color: '#ec4899', bg: 'rgba(236,72,153,0.12)'  }
     ];
 
     container.innerHTML = `

@@ -1142,7 +1142,33 @@ th.cap-S { color: #ce93d8 !important; }
     cursor: pointer;
 }
 .know-card:hover { border-color: #00e676; transform: translateY(-3px); }
-.know-img { height: 160px; background: #2a2a35; display: flex; align-items: center; justify-content: center; font-size: 48px; color: rgba(255,255,255,0.1); }
+.know-img { 
+    height: 160px; 
+    background: #2a2a35; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 48px; 
+    color: rgba(255,255,255,0.1); 
+    position: relative; 
+    overflow: hidden;
+}
+.know-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.know-card:hover .know-img img {
+    transform: scale(1.1);
+}
+.know-img::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.4));
+    pointer-events: none;
+}
 .know-body { padding: 20px; }
 .know-tag { font-size: 10px; color: #00e676; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; display: block; }
 .know-title { font-size: 18px; color: #fff; margin: 0 0 10px; font-weight: 600; line-height: 1.3; }
@@ -2563,7 +2589,7 @@ body.light .kpi-value { color: #1e293b; }
 /* Charts row — fills remaining vertical space */
 .mel-row {
     display: grid;
-    gap: 5px;
+    gap: 10px;
     flex: 1;
     min-height: 0;
 }
@@ -2585,8 +2611,6 @@ body.light .kpi-value { color: #1e293b; }
     .mel-row--3col,
     .mel-row--2col { grid-template-columns: 1fr; }
 }
-
-
 
 .mel-viz-card {
     background: rgba(255, 255, 255, 0.04);
@@ -2616,7 +2640,7 @@ body.light .mel-viz-card {
     position: relative;
     width: 100%;
     min-height: 0;
-
+    overflow: hidden;
 }
 
 /* Remove old unused class */

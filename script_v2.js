@@ -287,7 +287,7 @@ function populateCommDetail(commName) {
             demoEl.innerHTML = `
                 <div class="cd-demo-title" style="color:#00e676; border-bottom:none; margin-bottom:15px; font-size:0.75rem;">DEMOGRAPHICS</div>
                 <div class="cd-demo-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:15px 30px;">
-                    <div class="cd-demo-item" style="grid-column: span 2; margin-bottom: 5px;"><span class="cd-demo-label">PALIKA</span><span class="cd-demo-val" style="font-size:0.8rem; color:#bbb; line-height:1.4; display:block; margin-top:4px;">${demo.description || '—'}</span></div>
+                    <div class="cd-demo-item" style="grid-column: span 2; margin-bottom: 5px;"><span class="cd-demo-label">Municipality</span><span class="cd-demo-val" style="font-size:0.8rem; color:#bbb; line-height:1.4; display:block; margin-top:4px;">${demo.description || '—'}</span></div>
                     <div class="cd-demo-item"><span class="cd-demo-label"> DISTRICT</span><span class="cd-demo-val" style="font-size:0.9rem;">${demo.district || '—'}</span></div>
                     <div class="cd-demo-item"><span class="cd-demo-label">PROVINCE</span><span class="cd-demo-val" style="font-size:0.9rem;">${demo.province || '—'}</span></div>
                     <div class="cd-demo-item"><span class="cd-demo-label">TOTAL POP.</span><span class="cd-demo-val" style="font-size:0.9rem;">${demo.totalPop || '—'}</span></div>
@@ -1615,15 +1615,16 @@ window.openScoreDetailModal = function(item) {
             <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:16px;">
                 <!-- Column 1: Community Demographics -->
                 <div style="background:rgba(255,255,255,0.03); padding:10px; border-radius:8px;">
-                    <div style="font-size:0.65rem; color:#888; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1px solid rgba(255,255,255,0.05); margin-bottom:8px; padding-bottom:4px; font-weight:700;">Community Profile</div>
+                    <div style="font-size:0.65rem; color:#888; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1px solid rgba(255,255,255,0.05); margin-bottom:8px; padding-bottom:4px; font-weight:700;">Community Demographics</div>
                     <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
-                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#666; text-transform:uppercase;">Municipality</span><span style="font-size:0.65rem; color:#aaa;">${demo?.municipality || '-'}</span></div>
+
+                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#666; text-transform:uppercase;">Municipality</span><span style="font-size:0.65rem; color:#aaa;">${demo?.municipality|| '-'}</span></div>
 
                         <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#666; text-transform:uppercase;">District</span><span style="font-size:0.65rem; color:#aaa;">${demo?.district || '-'}</span></div>
 
                         <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#666; text-transform:uppercase;">Province</span><span style="font-size:0.65rem; color:#aaa;">${demo?.province || '-'}</span></div>
-
-                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#666; text-transform:uppercase;">Total Pop</span><span style="font-size:0.8rem; color:#eee; font-weight:600;">${demo?.totalPop || '-'}</span></div>
+                        
+<div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#666; text-transform:uppercase;">Total Pop</span><span style="font-size:0.8rem; color:#eee; font-weight:600;">${demo?.totalPop || '-'}</span></div>
                         <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#666; text-transform:uppercase;">Households</span><span style="font-size:0.8rem; color:#eee; font-weight:600;">${demo?.hhs || '-'}</span></div>
                         <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#666; text-transform:uppercase;">Men</span><span style="font-size:0.8rem; color:#eee;">${demo?.male || '-'}</span></div>
                         <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#666; text-transform:uppercase;">Women</span><span style="font-size:0.8rem; color:#eee;">${demo?.female || '-'}</span></div>
@@ -1658,10 +1659,10 @@ window.openScoreDetailModal = function(item) {
                                 <span id="modal-reach-overall" style="font-size:0.75rem; color:#888;">(Overall: ${totalOverall.toLocaleString()})</span>
                             </div>
                         </div>
-                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#888; text-transform:uppercase;">New Participant (Men)</span><span id="modal-reach-nm" style="font-size:0.8rem; color:#00e676; font-weight:600;">${rNM.toLocaleString()}</span></div>
-                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#888; text-transform:uppercase;">New Participant (Women)</span><span id="modal-reach-nw" style="font-size:0.8rem; color:#00e676; font-weight:600;">${rNW.toLocaleString()}</span></div>
-                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#888; text-transform:uppercase;">Old Participant (Men)</span><span id="modal-reach-om" style="font-size:0.8rem; color:#aaa;">${rOM.toLocaleString()}</span></div>
-                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#888; text-transform:uppercase;">Old Participant (Women)</span><span id="modal-reach-ow" style="font-size:0.8rem; color:#aaa;">${rOW.toLocaleString()}</span></div>
+                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#888; text-transform:uppercase;">New Participants (Men)</span><span id="modal-reach-nm" style="font-size:0.8rem; color:#00e676; font-weight:600;">${rNM.toLocaleString()}</span></div>
+                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#888; text-transform:uppercase;">New Participants (Women)</span><span id="modal-reach-nw" style="font-size:0.8rem; color:#00e676; font-weight:600;">${rNW.toLocaleString()}</span></div>
+                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#888; text-transform:uppercase;">Old Participants (Men)</span><span id="modal-reach-om" style="font-size:0.8rem; color:#aaa;">${rOM.toLocaleString()}</span></div>
+                        <div style="display:flex; flex-direction:column;"><span style="font-size:0.55rem; color:#888; text-transform:uppercase;">Old Participants (Women)</span><span id="modal-reach-ow" style="font-size:0.8rem; color:#aaa;">${rOW.toLocaleString()}</span></div>
                     </div>
                 </div>
             </div>
@@ -1978,7 +1979,9 @@ window._renderScoreKnowledgeTab = function() {
             <div onclick="window._toggleScoreKnowledge('${cardId}','${detailId}')"
                 style="padding:12px 14px;cursor:pointer;display:flex;align-items:center;gap:10px;"
                 onmouseover="this.style.background='rgba(255,255,255,0.04)'" onmouseout="this.style.background='transparent'">
-                <span style="font-size:1.4rem;flex-shrink:0;">${icon}</span>
+                <div style="width:40px;height:40px;flex-shrink:0;border-radius:8px;overflow:hidden;background:#2a2a35;border:1px solid rgba(255,255,255,0.1);">
+                    <img src="${getKnowledgeThumbnail(act)}" style="width:100%;height:100%;object-fit:cover;">
+                </div>
                 <div style="flex:1;min-width:0;">
                     <div style="font-size:0.82rem;font-weight:600;color:#fff;line-height:1.3;margin-bottom:3px;">${act.name}</div>
                     <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;">
@@ -2203,6 +2206,15 @@ function initKnowledgeScreen() {
     renderKnowledge('');
 }
 
+function getKnowledgeThumbnail(act) {
+    if (!act || !act.name) return 'assets/knowledge_default.jpg';
+    const name = act.name.toLowerCase();
+    if (name.includes('bio-dyke')) return 'assets/biodyke.jpg';
+    if (name.includes('flood')) return 'assets/flood.png';
+    if (name.includes('heatwave')) return 'assets/heatwave.png';
+    return 'assets/knowledge_default.jpg';
+}
+
 function renderKnowledge(query) {
     const grid = document.getElementById('knowledge-grid');
     const noRes = document.getElementById('know-no-results');
@@ -2236,7 +2248,9 @@ function renderKnowledge(query) {
 
         return `
         <div class="know-card" style="cursor:pointer;" onclick="openKnowledgeModal(knowledgeAllItems[${safeIdx}])">
-            <div class="know-img">${meta.icon}</div>
+            <div class="know-img">
+                <img src="${getKnowledgeThumbnail(act)}" alt="${act.name}">
+            </div>
             <div class="know-body">
                 <span class="know-tag">${kType}</span>
                 <h3 class="know-title">${act.name}</h3>
